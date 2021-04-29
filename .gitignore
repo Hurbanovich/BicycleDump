@@ -1,0 +1,4 @@
+.idea
+BicycleDump.iml
+target/*
+src/test/*
