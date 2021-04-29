@@ -15,8 +15,8 @@
         <spring.security.version>5.4.5</spring.security.version>
         <spring.web.version>5.3.5</spring.web.version>
         <hibernate.version>5.4.30.Final</hibernate.version>
+        <hibernate-validator.version>5.2.1.Final</hibernate-validator.version>
     </properties>
-
 
     <dependencies>
         <dependency>
@@ -75,6 +75,12 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
         </dependency>
 
         <dependency>

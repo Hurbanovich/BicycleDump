@@ -20,7 +20,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping(value = "/store")
+    @GetMapping(value = "/product")
     public ModelAndView allProduct(@RequestParam(defaultValue = "1") int page) {
         List<Product> products = productService.allProduct(page);
         int productCount = productService.productCount();
@@ -45,12 +45,12 @@ public class ProductController {
     public ModelAndView addProduct(@ModelAttribute("product") Product product) {
         ModelAndView modelAndView = new ModelAndView();
         if (productService.checkSeries(product.getSeries())) {
-            modelAndView.setViewName("redirect:/store");
+            modelAndView.setViewName("redirect:/product");
             modelAndView.addObject("page", page);
             productService.add(product);
         } else {
             modelAndView.addObject("message","part with series\"" + product.getSeries() + "\" already exists");
-            modelAndView.setViewName("redirect:/store");
+            modelAndView.setViewName("redirect:/product");
         }
         return modelAndView;
     }
@@ -69,7 +69,7 @@ public class ProductController {
     public ModelAndView editFilm(@ModelAttribute("prouct") Product product) {
         ModelAndView modelAndView = new ModelAndView();
         if (productService.checkSeries(product.getSeries()) || productService.getById(product.getId()).getSeries().equals(product.getSeries())) {
-            modelAndView.setViewName("redirect:/store");
+            modelAndView.setViewName("redirect:/product");
             modelAndView.addObject("page", page);
             productService.edit(product);
         } else {
@@ -85,7 +85,7 @@ public class ProductController {
         int productCount =productService.productCount();
         int page = ((productCount - 1) % 10 == 0 && productCount > 10 && this.page == (productCount + 9)/10) ?
                 this.page - 1 : this.page;
-        modelAndView.setViewName("redirect:/store");
+        modelAndView.setViewName("redirect:/product");
         modelAndView.addObject("page", page);
         Product product = productService.getById(id);
         productService.delete(product);

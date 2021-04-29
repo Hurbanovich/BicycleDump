@@ -5,11 +5,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Spring Security Example</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,cyrillic' rel='stylesheet'>
+    <link href="<c:url value="/res/css/stylehome.css"/>" rel="stylesheet">
+    <title>Home</title>
 </head>
 <body>
-<h1>Welcome!</h1>
-Click <a href="<spring:url value='/hello' />">here</a> to see a
-greeting
+<form>
+    <button class="bottom"><a href="/login">Login</a> </button>
+</form>
+<form>
+    <button class="bottom"><a href="/product">Product</a> </button>
+</form>
+<form>
+    <button class="bottom"><a href="/film">Film</a> </button>
+</form>
+
+<form>
+    <button class="bottom"><a href="/404">Users</a> </button>
+</form>
+<form>
+    <button class="bottom"><a href="/">Home</a> </button>
+</form>
+<form>
+    <button class="bottom"><a href="/logout">Logout</a> </button>
+</form>
 </body>
 </html>

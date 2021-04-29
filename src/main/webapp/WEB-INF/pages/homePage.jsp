@@ -5,6 +5,20 @@
 <html>
 <head>
     <title>store</title>
+    <style type="text/css">
+        TABLE {
+            width: 500px; /* Ширина таблицы */
+            border-collapse: collapse; /* Убираем двойные линии между ячейками */
+            margin: auto;
+        }
+        TD, TH {
+            padding: 3px; /* Поля вокруг содержимого таблицы */
+            border: 1px solid black; /* Параметры рамки */
+        }
+        TH {
+            background: #b0e0e6; /* Цвет фона */
+        }
+    </style>
 </head>
 <body>
 <table>
@@ -16,6 +30,7 @@
         <th>найменование</th>
         <th>производитель</th>
         <th>количество</th>
+        <th>действие</th>
     </tr>
     <c:forEach var="prod" items="${productList}" varStatus="i">
         <tr>
@@ -33,7 +48,7 @@
         <td colspan="7">
             <a href="<c:url value="/addProduct"/>">добавить</a>
             <c:forEach begin="${1}" end="${pagesCount}" step="1" varStatus="i">
-                <c:url value="/" var="url">
+                <c:url value="/product" var="url">
                     <c:param name="page" value="${i.index}"/>
                 </c:url>
                 <a href="${url}">${i.index}</a>
