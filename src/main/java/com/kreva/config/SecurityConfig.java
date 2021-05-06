@@ -17,19 +17,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .passwordEncoder(bCryptPasswordEncoder())
-                .withUser("user").password(bCryptPasswordEncoder().encode("123456")).roles("USER")
-                .and()
-                .withUser("admin").password(bCryptPasswordEncoder().encode("123456")).roles("USER", "ADMIN");
-    }
-
 //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(bCryptPasswordEncoder())
+//                .withUser("user").password(bCryptPasswordEncoder().encode("123456")).roles("USER")
+//                .and()
+//                .withUser("admin").password(bCryptPasswordEncoder().encode("123456")).roles("USER", "ADMIN");
 //    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+    }
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {

@@ -18,8 +18,12 @@ public class AuthenticationProviderConfig {
     public UserDetailsService userDetailsService() {
         JdbcDaoImpl jdbcDao = new JdbcDaoImpl();
         jdbcDao.setDataSource(dataSource);
-        jdbcDao.setUsersByUsernameQuery("select username, password, enabled from users where username=?");
-        jdbcDao.setAuthoritiesByUsernameQuery("select b.username, a.role from user_roles a, users b where b.username=? and a.userid=b.userid");
+        jdbcDao.setUsersByUsernameQuery("select username, password, 'true' as enabled from users where username=?");
+        jdbcDao.setAuthoritiesByUsernameQuery(
+                "select b.username, c.name " +
+                "from user_roles a, users b, roles c" +
+                        " where b.username=? and a.user_id=b.id and a.role_id=c.id");
+
         return jdbcDao;
     }
 }
