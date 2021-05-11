@@ -1,36 +1,61 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,cyrillic' rel='stylesheet'>
     <link href="<c:url value="/res/css/stylehome.css"/>" rel="stylesheet">
-    <title>Home</title>
+    <title><spring:message code="home.title"/></title>
 </head>
 <body>
-<form>
-    <button class="bottom"><a href="/login">Login</a> </button>
-</form>
-<form>
-    <button class="bottom"><a href="/product">Product</a> </button>
-</form>
-<form>
-    <button class="bottom"><a href="/film">Film</a> </button>
-</form>
 
-<form>
-    <button class="bottom"><a href="/404">Users</a> </button>
-</form>
-<form>
-    <button class="bottom"><a href="/">Home</a> </button>
-</form>
-<form>
-    <button class="bottom"><a href="/logout">Logout</a> </button>
-</form>
-<form>
-    <button class="bottom"><a href="/registration">registration</a> </button>
-</form>
+<header>
+    <a href="${request.contextPath}?lang=en"><spring:message code="language.en"/></a>
+    <a href="${request.contextPath}?lang=ru"><spring:message code="language.ru"/></a>
+    <div class="container">
+        <a href="/" class="logo"><img src="/res/png/logo.png"></a>
+        <div class="header-left">
+            <sec:authorize access="!isAuthenticated()">
+                <button inputmode="input.button"><a href="${request.contextPath}/login" class="link_language"><spring:message code="films.page.login"/></a></button>
+                <button inputmode="input.button"><a href="${request.contextPath}/registration" class="link_language"><spring:message code="home.regictration"/></a> </button>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <button inputmode="input.button"><a href="${request.contextPath}/login?logout" class="link_language"><spring:message code="films.page.logout"/></a></button>
+            </sec:authorize>
+        </div>
+    <nav>
+        <ul>
+            <li><a class="button5" href="/product"><spring:message code="home.shop"/></a> </li>
+            <li><a class="button5" href="/film"><spring:message code="films.page.title"/></a> </li>
+            <li><a class="button5" href="/404"><spring:message code="home.users"/></a> </li>
+            <li><a class="button5" href="/logout"><spring:message code="films.page.logout"/></a> </li>
+        </ul>
+    </nav>
+</div></header>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-1-3"></div>
+            <div class="col-2-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-1-2"></div>
+            <div class="col-1-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-1-4"></div>
+            <div class="col-1-4"></div>
+            <div class="col-1-2"></div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <div class="col-1-3"></div>
+        <div class="col-1-3"></div>
+        <div class="col-1-3"></div>
+    </div>
+</footer>
 </body>
 </html>

@@ -1,60 +1,149 @@
 html {
-    padding-top: 5px;
-    background-image: url(../png/background.jpg);
+    background-color: #66512c;
 }
-body {
-    width: 75%;
-    padding: 40px;
-    margin: 15px auto;
-    background-color: #EBEBEB;
-    border-radius: 30px;
+header{
+    background-color: #2e6da4;
 }
-
-h1 {
-    color: #E87E04;
-    font-size: 2em;
-    margin-left: 20px;
-    font-family: 'Roboto Condensed', sans-serif;
+body{
+    background-color: #a8a7a8;
+}
+footer{
+    background-color: #404040;
+}
+img{
+    width: 50%;
 }
 
-h2 {
-    color: #E87E04;
-    font-size: 1.7em;
-    margin-left: 20px;
-    font-family: 'Roboto Condensed', sans-serif;
+
+.container {
+    width: 100%;
+    max-width: 1024px; /*максимальная ширина может иметь другое значение*/
+    padding: 15px;
+    margin: 0 auto;
+}
+.container:after, .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.logo {
+    float: left;
+
+}
+nav {
+    float: right;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+nav li {
+    margin: 10px;
+    padding: 10px;
+    display: inline-block; /*один из способов разместить элементы в строку*/
+}
+nav a {
+    text-decoration: none;
+    line-height: 38px;
 }
 
-p {
-    color: #22313F;
-    line-height: 150%;
-    margin-top: 20px;
-    margin-left: 20px;
-    font-family: 'Roboto Condensed', sans-serif;
+.col-1-2 {
+    width: 50%;
+    float: left;
+}
+.col-1-3 {
+    width: 33.3333333333%;
+    float: left;
+}
+.col-1-4 {
+    width: 25%;
+    float: left;
+}
+.col-2-3 {
+    width: 66.6666666667%;
+    float: left;
+}
+.row {
+    margin-bottom: 15px;
 }
 
-.block-level {
-    width: 120px;
-    height: 120px;
-    margin: 20px;
+
+
+
+button {
     position: relative;
-    float: left;
+    display: inline-block;
+    font-family: Arial,Helvetica,FreeSans,"Liberation Sans","Nimbus Sans L",sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: rgb(245,245,245);
+    text-shadow: 0 -1px rgba(0,0,0,.1);
+    text-decoration: none;
+    user-select: none;
+    padding: .3em 1em;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background: #525452 linear-gradient(#acbcb7, #7f8a7f);
+    box-shadow: inset #2645de 0 -1px 1px, inset 0 1px 1px #8da5ee, #3c58aa 0 0 0 1px, rgba(0,0,0,.3) 0 2px 5px;
+    -webkit-animation: pulsate 1.2s linear infinite;
+    animation: pulsate 1.2s linear infinite;
 }
-.emphasize-dark {
-    color: #a8a7a8;
-    -moz-border-radius: 50%;
-    box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+input.button:hover {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+    cursor: pointer;
+}
+input.button:active {
+    top: 1px;
+    color: #fff;
+    text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;
+    box-shadow: 0 -1px 3px rgba(0,0,0,.3), 0 1px 1px #fff, inset 0 1px 2px rgba(0,0,0,.8), inset 0 -1px 0 rgba(0,0,0,.05);
+}
+@-webkit-keyframes pulsate {
+    50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
+}
+@keyframes pulsate {
+    50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
+}
 
+a.button5 {
+    display: inline-block;
+    color: #000;
+    font-size: 12px;
+    text-decoration: none;
+    user-select: none;
+    padding: 0 5px;
+    outline: none;
+    border-radius: 2px;
 }
-.bottom {
-    border-style: ridge;
-    box-shadow: 0 4px 2px -2px rgba(203, 15, 15, 0.4);
-    background-color: #EEDDFF;
-    border-radius: 25px;
-    width: 120px;
-    margin: 20px;
-    float: left;
+a.button5:before {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;  /* для больших картинок 0 */
+    padding-right: 5px;
+}
+/*a.button5[data-twitter]:before {content: url(http://favicon.yandex.net/favicon/twitter.com);}*/
+/*a.button5[data-vk]:before {content: url(http://favicon.yandex.net/favicon/vk.com);}*/
+/*a.button5[data-facebook]:before {content: url(http://favicon.yandex.net/favicon/facebook.com);}*/
+a.button5:hover {
+    background: linear-gradient(#ececeb, #eaeaea);
+    box-shadow:
+            inset rgba(0,0,0,.5) 0 -1px 1px,
+            inset rgba(0,0,0,.2) 0 1px,
+            inset #fff 0 2px,
+            rgba(0,0,0,.2) 0 1px 1px;
+}
+a.button5:active {
+    background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.1));
+    box-shadow:
+            inset rgba(0,0,0,.8) 0 1px 2px,
+            inset rgba(0,0,0,.05) 0 -1px 0,
+            #fff 0 1px 1px;
+}
 
-}
-div {
 
-}
+
+
+

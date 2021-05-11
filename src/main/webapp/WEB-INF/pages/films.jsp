@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<html>
+Главная<html>
 <head>
     <title><spring:message code="films.page.title"/></title>
     <link href="<c:url value="/res/css/styles.css"/>" rel="stylesheet" type="text/css"/>

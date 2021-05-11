@@ -48,7 +48,7 @@ table {
 }
 
 body, .login-submit, .login-submit:before, .login-submit:after {
-  background: #373737 url("../res/img/bg.png") 0 0 repeat;
+  background: #373737 url("../res/png/bg.png") 0 0 repeat;
 }
 
 body {
@@ -229,7 +229,7 @@ label {
   background: #313131;
 }
 
-/* Стили бара vladmaxi, можно удалить */
+/* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ vladmaxi, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .vladmaxi-top{
 	line-height: 24px;
 	font-size: 11px;

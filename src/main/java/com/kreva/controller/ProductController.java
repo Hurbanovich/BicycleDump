@@ -26,7 +26,7 @@ public class ProductController {
         int productCount = productService.productCount();
         int pagesCount = (productCount + 9)/10;
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("homePage");
+        modelAndView.setViewName("productPage");
         modelAndView.addObject("page", page);
         modelAndView.addObject("productList", products);
         modelAndView.addObject("productCount", productCount);
