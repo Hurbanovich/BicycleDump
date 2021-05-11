@@ -29,5 +29,8 @@
 <form>
     <button class="bottom"><a href="/logout">Logout</a> </button>
 </form>
+<form>
+    <button class="bottom"><a href="/registration">registration</a> </button>
+</form>
 </body>
 </html>
