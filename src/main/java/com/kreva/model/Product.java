@@ -1,6 +1,7 @@
 package com.kreva.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(schema = "bicyclestore", name = "product")
@@ -16,18 +17,24 @@ public class Product {
     private String comment;
     private String picture;
     private int quantity;
+    private Sections sections;
+    private Date dateAddProduct;
 
     public Product() {
     }
 
-    public Product(int id, String series, String name, String brand, int price, String comment, int quantity) {
-        this.id = id;
+    public Product(String series, String name, String brand,
+                   int price, String comment, String picture, int quantity,
+                   Sections sections, Date dateAddProduct) {
         this.series = series;
         this.name = name;
         this.brand = brand;
         this.price = price;
         this.comment = comment;
+        this.picture = picture;
         this.quantity = quantity;
+        this.sections = sections;
+        this.dateAddProduct = dateAddProduct;
     }
 
     public int getId() {
@@ -82,6 +89,19 @@ public class Product {
     public void setComent(String comment) {
         this.comment = comment;
     }
+    public Sections getSections() {
+        return sections;
+    }
+    public void setSections(Sections sections) {
+        this.sections = sections;
+    }
+    public Date getDateAddProduct() {
+        return dateAddProduct;
+    }
+    public void setDateAddProduct(Date dateAddProduct) {
+        this.dateAddProduct = dateAddProduct;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -89,16 +109,4 @@ public class Product {
         this.quantity = quantity;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", series='" + series + '\'' +
-                ", name='" + name + '\'' +
-                ", brand='" + brand + '\'' +
-                ", price=" + price +
-                ", coment='" + comment + '\'' +
-                ", quantity=" + quantity +
-                '}';
-    }
 }

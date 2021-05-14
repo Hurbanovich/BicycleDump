@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -28,7 +29,9 @@ public class ProductDAOImpl implements ProductDAO{
 
     @Override
     public void add(Product product) {
+        Date date = new Date();
         Session session = sessionFactory.getCurrentSession();
+        product.setDateAddProduct(date);
         session.persist(product);
 
     }

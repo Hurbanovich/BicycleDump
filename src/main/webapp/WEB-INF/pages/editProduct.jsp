@@ -34,7 +34,12 @@
     <p><input type="number" name="quantity" placeholder="quantity" value="${product.quantity}" required>
     <p><input type="text" name="picture" placeholder="picture" value="${product.picture}" maxlength="20" required>
     <p><input type="text" name="comment" placeholder="comment" value="${product.comment}" maxlength="20" required>
-    <p>
+    <p><select name="sections" required="required">
+    <option value="">Выберите раздел</option>
+    <option value="FRONTDERAILLEUR">FRONTDERAILLEUR</option>
+    <option value="CONNECTTINGRODS">CONNECTTINGRODS</option>
+</select>
+
         <c:set value="add" var="add"/>
         <c:set value="edit" var="edit"/>
         <input type="submit" value="${empty product.series ? add : edit}">
