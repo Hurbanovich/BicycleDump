@@ -68,4 +68,10 @@ public class ProductServiseImpl implements ProductService{
     public int productCount() {
         return productDAO.productCount();
     }
+
+    @Override
+    @Transactional
+    public List<Product> allProductFilter(String sections) {
+        return productDAO.allProductFilter(sections);
+    }
 }

@@ -16,4 +16,6 @@ public interface ProductService {
     void addProduct(Product product, int quantity);
 
     int productCount();
+
+    List<Product> allProductFilter(String sections);
 }

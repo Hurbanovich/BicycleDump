@@ -17,15 +17,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .passwordEncoder(bCryptPasswordEncoder())
-//                .withUser("user").password(bCryptPasswordEncoder().encode("123456")).roles("USER")
-//                .and()
-//                .withUser("admin").password(bCryptPasswordEncoder().encode("123456")).roles("USER", "ADMIN");
-//    }
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
@@ -39,8 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/hello","/product").hasRole("ADMIN")
-                .antMatchers("/homePage","/film").authenticated()
+                .antMatchers("/hello","/product","/film").hasAnyRole("WORKER","ADMIN")
+                .antMatchers("/homePage").authenticated()
                 .anyRequest().permitAll();
         http.formLogin()
                 .loginPage("/login")

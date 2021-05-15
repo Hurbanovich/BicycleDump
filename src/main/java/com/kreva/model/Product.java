@@ -17,7 +17,7 @@ public class Product {
     private String comment;
     private String picture;
     private int quantity;
-    private Sections sections;
+    private String sections;
     private Date dateAddProduct;
 
     public Product() {
@@ -25,7 +25,7 @@ public class Product {
 
     public Product(String series, String name, String brand,
                    int price, String comment, String picture, int quantity,
-                   Sections sections, Date dateAddProduct) {
+                   String sections, Date dateAddProduct) {
         this.series = series;
         this.name = name;
         this.brand = brand;
@@ -89,10 +89,10 @@ public class Product {
     public void setComent(String comment) {
         this.comment = comment;
     }
-    public Sections getSections() {
+    public String getSections() {
         return sections;
     }
-    public void setSections(Sections sections) {
+    public void setSections(String sections) {
         this.sections = sections;
     }
     public Date getDateAddProduct() {

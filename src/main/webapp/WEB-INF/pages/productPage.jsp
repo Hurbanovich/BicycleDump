@@ -28,6 +28,7 @@
         <th>ид</th>
         <th>серия</th>
         <th>найменование</th>
+        <th>раздел</th>
         <th>производитель</th>
         <th>количество</th>
         <th>действие</th>
@@ -38,6 +39,7 @@
             <td>${prod.id}</td>
             <td>${prod.series}</td>
             <td>${prod.name}</td>
+            <td>${prod.sections}</td>
             <td>${prod.brand}</td>
             <td>${prod.quantity}</td>
             <td><a href="<c:url value="/editProduct/${prod.id}"/>">edit</a></td>

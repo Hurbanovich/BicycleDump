@@ -26,10 +26,14 @@
         </div>
         <nav>
             <ul>
-                <li><a class="button5" href="/product"><spring:message code="home.shop"/></a> </li>
+                <li><sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <a class="button5" href="/product"><spring:message code="home.shop"/></a></sec:authorize> </li>
+                <li><sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <a class="button5" href="/404"><spring:message code="home.users"/></a></sec:authorize> </li>
+                <li><a class="button5" href="/store"><spring:message code="home.shop"/></a> </li>
                 <li><a class="button5" href="/film"><spring:message code="films.page.title"/></a> </li>
-                <li><a class="button5" href="/404"><spring:message code="home.users"/></a> </li>
-                <li><a class="button5" href="/logout"><spring:message code="films.page.logout"/></a> </li>
+                <li><sec:authorize access="isAuthenticated()">
+                    <a class="button5" href="/logout"><spring:message code="films.page.logout"/></a></sec:authorize> </li>
             </ul>
         </nav>
     </div>
@@ -37,15 +41,12 @@
 <div id="menu">
     <nav>
         <ul>
-            <li class=""><a href="/product"><spring:message code="home.shop"/></a> </li>
-            <li><a href="/film"><spring:message code="films.page.title"/></a> </li>
-            <li><a href="/404"><spring:message code="home.users"/></a> </li>
-            <li><a href="/logout"><spring:message code="films.page.logout"/></a> </li>
+            <li><sec:authorize access="hasRole('ROLE_ADMIN')">
+                <a href="/product"><spring:message code="home.shop"/></a></sec:authorize> </li>
+            <li><sec:authorize access="hasRole('ROLE_ADMIN')">
+                <a href="/404"><spring:message code="home.users"/></a></sec:authorize> </li>
         </ul>
     </nav>
-</div>
-<div id = "content">
-    <img id="img" src="/res/png/logo.png">
 </div>
 
 
@@ -53,10 +54,8 @@
 <footer>
         <nav>
         <ul>
-            <li class=""><a href="/product"><spring:message code="home.shop"/></a> </li>
-            <li><a href="/film"><spring:message code="films.page.title"/></a> </li>
-            <li><a href="/404"><spring:message code="home.users"/></a> </li>
-            <li><a href="/logout"><spring:message code="films.page.logout"/></a> </li>
+            <li><sec:authorize access="isAuthenticated()">
+                <a href="/logout"><spring:message code="films.page.logout"/></a></sec:authorize></li>
         </ul>
         </nav>
 </footer>

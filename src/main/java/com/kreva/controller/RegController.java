@@ -23,25 +23,26 @@ public class RegController {
     private UserValidator userValidator;
 
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
-        model.addAttribute("userForm", new User());
-
-        return "registration";
+    @GetMapping(value = "/registration")
+    public ModelAndView registration(@ModelAttribute("userForm") User user){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/registration");
+        return modelAndView;
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+    @PostMapping(value = "/registration")
+    public ModelAndView registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult){
+        ModelAndView modelAndView = new ModelAndView();
         userValidator.validate(userForm, bindingResult);
-
         if (bindingResult.hasErrors()) {
-            return "registration";
+            modelAndView.setViewName("/registration");
+        }else {
+            userService.add(userForm);
+            modelAndView.setViewName("/home");
         }
-
-        userService.add(userForm);
-
-
-        return "redirect:/home";
+        return modelAndView;
     }
+
+
 
 }

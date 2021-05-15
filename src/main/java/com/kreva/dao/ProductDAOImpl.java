@@ -69,6 +69,15 @@ public class ProductDAOImpl implements ProductDAO{
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("select count(*) from Product", Number.class).getSingleResult().intValue();
     }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Product> allProductFilter(String sections) {
+        Session session = sessionFactory.getCurrentSession();
+       return session.createQuery("from Product where sections = :sections").list();
+
+    }
+
     @Override
     public void addProduct(Product product, int quantity){
         product.setQuantity(product.getQuantity() + quantity);

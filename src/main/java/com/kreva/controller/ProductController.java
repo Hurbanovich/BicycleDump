@@ -2,6 +2,7 @@ package com.kreva.controller;
 
 
 import com.kreva.model.Product;
+import com.kreva.model.Sections;
 import com.kreva.servise.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,30 @@ public class ProductController {
         modelAndView.addObject("pagesCount", pagesCount);
         this.page = page;
         return modelAndView;
+    }
+    @GetMapping(value = "/store")
+    public ModelAndView store(@RequestParam(defaultValue = "1") int page) {
+        List<Product> products = productService.allProduct(page);
+        int productCount = productService.productCount();
+        int pagesCount = (productCount + 9)/10;
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("store");
+        modelAndView.addObject("page", page);
+        modelAndView.addObject("productList", products);
+        modelAndView.addObject("productCount", productCount);
+        modelAndView.addObject("pagesCount", pagesCount);
+        this.page = page;
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/filter")
+    public ModelAndView FilterStore(@RequestParam(value = "sections") String sections){
+        ModelAndView modelAndView = new ModelAndView();
+        List<Product> products = productService.allProductFilter(sections);
+        modelAndView.addObject("productList",products);
+        modelAndView.setViewName("store");
+        return modelAndView;
+
     }
     @GetMapping(value = "/addProduct")
     public ModelAndView addPageProduct(@ModelAttribute("message") String message) {
