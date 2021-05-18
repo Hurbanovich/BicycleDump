@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 
 @EnableWebSecurity
@@ -27,14 +27,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+        return new MySimpleUrlAuthenticationSuccessHandler();
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/hello","/product","/film").hasAnyRole("WORKER","ADMIN")
+                .antMatchers("/hello","/product").hasAnyRole("WORKER","ADMIN")
                 .antMatchers("/homePage").authenticated()
                 .anyRequest().permitAll();
         http.formLogin()
                 .loginPage("/login")
+                .successHandler(myAuthenticationSuccessHandler())
                 .usernameParameter("username")
                 .passwordParameter("password");
         http.logout()

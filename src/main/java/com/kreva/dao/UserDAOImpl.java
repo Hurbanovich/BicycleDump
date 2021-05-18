@@ -56,6 +56,29 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
+    public void addUser(User user) {
+        Session session = sessionFactory.getCurrentSession();
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        Role role;
+        if(user.getSerialization() == 2){
+            role = session.load(Role.class,2L);
+        }else {
+             role = session.load(Role.class,3L);
+        }
+        Set<Role> roles = new HashSet<>();
+        roles.add(role);
+        user.setRoles(roles);
+        System.out.println(user.getId());
+        System.out.println(user.getUsername());
+        System.out.println(user.getEmail());
+        System.out.println(user.getPassword());
+        System.out.println(user.getRoles());;
+
+        session.persist(user);
+
+    }
+
+    @Override
     public void delete(User user) {
         Session session = sessionFactory.getCurrentSession();
         session.delete(user);

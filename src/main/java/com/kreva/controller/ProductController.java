@@ -2,7 +2,6 @@ package com.kreva.controller;
 
 
 import com.kreva.model.Product;
-import com.kreva.model.Sections;
 import com.kreva.servise.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +35,7 @@ public class ProductController {
         return modelAndView;
     }
     @GetMapping(value = "/store")
-    public ModelAndView store(@RequestParam(defaultValue = "1") int page) {
+    public ModelAndView store(@RequestParam(defaultValue = "1") int page){
         List<Product> products = productService.allProduct(page);
         int productCount = productService.productCount();
         int pagesCount = (productCount + 9)/10;
@@ -50,11 +49,19 @@ public class ProductController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/filter")
-    public ModelAndView FilterStore(@RequestParam(value = "sections") String sections){
+    @PostMapping(value = "/filter")
+    public ModelAndView FilterStore(@ModelAttribute("sections") String sections){
         ModelAndView modelAndView = new ModelAndView();
         List<Product> products = productService.allProductFilter(sections);
         modelAndView.addObject("productList",products);
+        modelAndView.setViewName("store");
+        return modelAndView;
+
+    }
+    @GetMapping(value = "/filter")
+    public ModelAndView Filter(@ModelAttribute("sections") String sections){
+        ModelAndView modelAndView = new ModelAndView();
+
         modelAndView.setViewName("store");
         return modelAndView;
 
@@ -91,7 +98,7 @@ public class ProductController {
     }
 
     @PostMapping(value = "/editProduct")
-    public ModelAndView editFilm(@ModelAttribute("prouct") Product product) {
+    public ModelAndView editProduct(@ModelAttribute("prouct") Product product) {
         ModelAndView modelAndView = new ModelAndView();
         if (productService.checkSeries(product.getSeries()) || productService.getById(product.getId()).getSeries().equals(product.getSeries())) {
             modelAndView.setViewName("redirect:/product");
@@ -105,7 +112,7 @@ public class ProductController {
     }
 
     @GetMapping(value="/deleteProduct/{id}")
-    public ModelAndView deleteFilm(@PathVariable("id") int id) {
+    public ModelAndView deleteProduct(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         int productCount =productService.productCount();
         int page = ((productCount - 1) % 10 == 0 && productCount > 10 && this.page == (productCount + 9)/10) ?

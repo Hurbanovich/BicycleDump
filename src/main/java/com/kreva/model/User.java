@@ -1,8 +1,6 @@
 package com.kreva.model;
 
 
-import org.hibernate.query.Query;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -25,6 +23,9 @@ public class User {
 
     @Transient
     private String confirmPassword;
+
+    @Transient
+    private int serialization;
 
     @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
@@ -69,6 +70,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getSerialization() {
+        return serialization;
+    }
+
+    public void setSerialization(int serialization) {
+        this.serialization = serialization;
     }
 
     public Set<Role> getRoles() {

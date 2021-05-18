@@ -15,15 +15,6 @@
     <a href="${request.contextPath}?lang=ru"><spring:message code="language.ru"/></a>
     <div>
         <a href="/" class="logo"><img src="/res/png/logo.png"></a>
-        <div class="header-left">
-            <sec:authorize access="!isAuthenticated()">
-                <button inputmode="input.button"><a href="${request.contextPath}/login" class="link_language"><spring:message code="films.page.login"/></a></button>
-                <button inputmode="input.button"><a href="${request.contextPath}/registration" class="link_language"><spring:message code="home.regictration"/></a> </button>
-            </sec:authorize>
-            <sec:authorize access="isAuthenticated()">
-                <button inputmode="input.button"><a href="${request.contextPath}/" class="link_language"><spring:message code="films.page.logout"/></a></button>
-            </sec:authorize>
-        </div>
         <nav>
             <ul>
                 <li><sec:authorize access="hasRole('ROLE_ADMIN')">

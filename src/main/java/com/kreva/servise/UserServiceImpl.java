@@ -67,5 +67,10 @@ public class UserServiceImpl implements UserService{
         return userDAO.checkUsername(username);
     }
 
+    @Override
+    public void addUser(User user) {
+        userDAO.addUser(user);
+    }
+
 
 }

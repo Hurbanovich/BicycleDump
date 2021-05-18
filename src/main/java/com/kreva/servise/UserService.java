@@ -15,4 +15,6 @@ public interface UserService {
     int userCount();
 
     boolean checkUsername(String username);
+
+    void addUser(User userForm);
 }

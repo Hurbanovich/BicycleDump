@@ -3,7 +3,6 @@ html {
     object-fit: cover;
 }
 header{
-    background: #f6f6f6;
     position: fixed;
     top: 3%;
     left: 5%;
@@ -11,8 +10,6 @@ header{
     height: 15%;
 }
 body{
-    background-image: url("/res/png/Shema.png");
-    object-fit: cover;
 
     position: fixed;
     top: 19%;
@@ -58,6 +55,7 @@ img{
 }
 .logo {
     float: left;
+    border-radius: 15%;
 
 }
 nav {

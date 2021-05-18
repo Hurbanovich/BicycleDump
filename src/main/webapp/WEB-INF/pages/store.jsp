@@ -33,7 +33,7 @@
                 <button inputmode="input.button"><a href="${request.contextPath}/registration" class="link_language"><spring:message code="home.regictration"/></a> </button>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-                <button inputmode="input.button"><a href="${request.contextPath}/login?logout" class="link_language"><spring:message code="films.page.logout"/></a></button>
+                <button inputmode="input.button"><a href="${request.contextPath}/logout" class="link_language"><spring:message code="films.page.logout"/></a></button>
             </sec:authorize>
         </div>
         <nav>
